@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Calculadora {
-    private JLabel lblResultado;
+    private JTextField txtResultado;
     private JButton btn1;
     private JButton btn4;
     private JButton btn7;
@@ -19,8 +19,11 @@ public class Calculadora {
     private JButton btnDiv;
     private JButton btn0;
     private JButton btnC;
-    private JButton btn1Igual;
+    private JButton btnIgual;
     private JPanel panelMain;
+    private Integer num1 = null;
+    private Integer num2 = null;
+    private Integer qualCalculo = 0;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Minha calculadora");
@@ -28,15 +31,13 @@ public class Calculadora {
         frame.setSize(300, 200);
         frame.setVisible(true);
     }
-    public Calculadora(){
-        final Integer[] num1 = {0};
-        final Integer[] qualCalculo = {0};
 
+    public Calculadora(){
         btn0.addActionListener(
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "0");
+                        txtResultado.setText(txtResultado.getText() + "0");
                     }
                 }
         );
@@ -44,7 +45,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "1");
+                        txtResultado.setText(txtResultado.getText() + "1");
                     }
                 }
         );
@@ -52,7 +53,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "2");
+                        txtResultado.setText(txtResultado.getText() + "2");
                     }
                 }
         );
@@ -60,7 +61,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "3");
+                        txtResultado.setText(txtResultado.getText() + "3");
                     }
                 }
         );
@@ -68,7 +69,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "4");
+                        txtResultado.setText(txtResultado.getText() + "4");
                     }
                 }
         );
@@ -76,7 +77,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "5");
+                        txtResultado.setText(txtResultado.getText() + "5");
                     }
                 }
         );
@@ -84,7 +85,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "6");
+                        txtResultado.setText(txtResultado.getText() + "6");
                     }
                 }
         );
@@ -92,7 +93,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "7");
+                        txtResultado.setText(txtResultado.getText() + "7");
                     }
                 }
         );
@@ -100,7 +101,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "8");
+                        txtResultado.setText(txtResultado.getText() + "8");
                     }
                 }
         );
@@ -108,7 +109,7 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        lblResultado.setText(lblResultado.getText() + "9");
+                        txtResultado.setText(txtResultado.getText() + "9");
                     }
                 }
         );
@@ -116,9 +117,12 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        num1[0] = Integer.valueOf(lblResultado.getText());
-                        lblResultado.setText(String.valueOf(num1[0]));
-                        qualCalculo[0] = 1;
+                        if(qualCalculo == 0){
+                            num1 = Integer.valueOf(txtResultado.getText());
+                            txtResultado.setText(String.valueOf(num1));
+                            qualCalculo = 1;
+                            txtResultado.setText("");
+                        }
                     }
                 }
         );
@@ -126,9 +130,13 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        num1[0] = Integer.valueOf(lblResultado.getText());
-                        lblResultado.setText(String.valueOf(num1[0]));
-                        qualCalculo[0] = 2;
+                        if(qualCalculo == 0){
+                            num1 = Integer.valueOf(txtResultado.getText());
+                            txtResultado.setText(String.valueOf(num1));
+                            qualCalculo = 2;
+                            txtResultado.setText("");
+                        }
+
                     }
                 }
         );
@@ -136,9 +144,12 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        num1[0] = Integer.valueOf(lblResultado.getText());
-                        lblResultado.setText(String.valueOf(num1[0]));
-                        qualCalculo[0] = 3;
+                        if(qualCalculo == 0){
+                            num1 = Integer.valueOf(txtResultado.getText());
+                            txtResultado.setText(String.valueOf(num1));
+                            qualCalculo = 3;
+                            txtResultado.setText("");
+                        }
                     }
                 }
         );
@@ -146,10 +157,48 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                            num1[0] = Integer.valueOf(lblResultado.getText());
-                            lblResultado.setText(String.valueOf(num1[0]+"0"));
-                            qualCalculo[0] = 4;
+                        if(qualCalculo == 0){
+                            num1 = Integer.valueOf(txtResultado.getText());
+                            txtResultado.setText(String.valueOf(num1));
+                            qualCalculo = 4;
+                            txtResultado.setText("");
+                        }
 
+                    }
+                }
+        );
+        btnIgual.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(num1 != null && qualCalculo != 0){
+                            num2 = Integer.valueOf(txtResultado.getText());
+                            if(qualCalculo == 1){
+                                txtResultado.setText(String.valueOf(num1 + num2));
+                            }else if(qualCalculo == 2){
+                                txtResultado.setText(String.valueOf(num1 - num2));
+                            }else if(qualCalculo == 3){
+                                if(num2 == 0){
+                                    txtResultado.setText("Divisão por 0");
+                                }else{
+                                    txtResultado.setText(String.valueOf(Double.valueOf(num1) / Double.valueOf(num2)));
+                                }
+                            }else if(qualCalculo == 4){
+                                txtResultado.setText(String.valueOf(num1 * num2));
+                            }
+                        }
+
+                    }
+                }
+        );
+        btnC.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        txtResultado.setText("");
+                        num1 = null;
+                        num2 = null;
+                        qualCalculo = 0;
                     }
                 }
         );
@@ -157,4 +206,3 @@ public class Calculadora {
     }
 
 }
-
