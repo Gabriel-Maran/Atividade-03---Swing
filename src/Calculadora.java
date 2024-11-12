@@ -48,6 +48,7 @@ public class Calculadora {
                         txtResultado.setText(txtResultado.getText() + "1");
                     }
                 }
+
         );
         btn2.addActionListener(
                 new ActionListener() {
