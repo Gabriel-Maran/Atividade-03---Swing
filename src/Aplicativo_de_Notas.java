@@ -54,7 +54,7 @@ public class Aplicativo_de_Notas {
         JFrame frame = new JFrame("Aplicativo de Notas");
         frame.setContentPane(new Aplicativo_de_Notas().panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+        frame.setSize(400, 400);
         frame.setVisible(true);
     }
 }
