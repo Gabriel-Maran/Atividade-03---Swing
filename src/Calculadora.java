@@ -21,9 +21,10 @@ public class Calculadora {
     private JButton btnC;
     private JButton btnIgual;
     private JPanel panelMain;
-    private Integer num1 = null;
-    private Integer num2 = null;
+    Double num1 = null;
+    Double num2 = null;
     private Integer qualCalculo = 0;
+    Double resultado = null;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Minha calculadora");
@@ -118,12 +119,13 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(qualCalculo == 0){
-                            num1 = Integer.valueOf(txtResultado.getText());
+                        if(qualCalculo == 0 && num2 == null){
+                            num1 = Double.valueOf(txtResultado.getText());
                             txtResultado.setText(String.valueOf(num1));
-                            qualCalculo = 1;
-                            txtResultado.setText("");
                         }
+                        txtResultado.setText("");
+                        qualCalculo = 1;
+
                     }
                 }
         );
@@ -131,13 +133,12 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(qualCalculo == 0){
-                            num1 = Integer.valueOf(txtResultado.getText());
+                        if(qualCalculo == 0 && num2 == null){
+                            num1 = Double.valueOf(txtResultado.getText());
                             txtResultado.setText(String.valueOf(num1));
-                            qualCalculo = 2;
-                            txtResultado.setText("");
                         }
-
+                        txtResultado.setText("");
+                        qualCalculo = 2;
                     }
                 }
         );
@@ -145,12 +146,13 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(qualCalculo == 0){
-                            num1 = Integer.valueOf(txtResultado.getText());
+                        if(qualCalculo == 0 && num2 == null){
+                            num1 = Double.valueOf(txtResultado.getText());
                             txtResultado.setText(String.valueOf(num1));
-                            qualCalculo = 3;
-                            txtResultado.setText("");
                         }
+                        txtResultado.setText("");
+                        qualCalculo = 3;
+
                     }
                 }
         );
@@ -158,13 +160,12 @@ public class Calculadora {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(qualCalculo == 0){
-                            num1 = Integer.valueOf(txtResultado.getText());
+                        if(qualCalculo == 0 && num2 == null){
+                            num1 = Double.valueOf(txtResultado.getText());
                             txtResultado.setText(String.valueOf(num1));
-                            qualCalculo = 4;
-                            txtResultado.setText("");
                         }
-
+                        txtResultado.setText("");
+                        qualCalculo = 4;
                     }
                 }
         );
@@ -173,20 +174,23 @@ public class Calculadora {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(num1 != null && qualCalculo != 0){
-                            num2 = Integer.valueOf(txtResultado.getText());
+                            num2 = Double.valueOf(txtResultado.getText());
                             if(qualCalculo == 1){
-                                txtResultado.setText(String.valueOf(num1 + num2));
+                                resultado = Double.valueOf(num1+num2);
                             }else if(qualCalculo == 2){
-                                txtResultado.setText(String.valueOf(num1 - num2));
+                                resultado = Double.valueOf(num1-num2);
                             }else if(qualCalculo == 3){
                                 if(num2 == 0){
                                     txtResultado.setText("Divisão por 0");
                                 }else{
-                                    txtResultado.setText(String.valueOf(Double.valueOf(num1) / Double.valueOf(num2)));
+                                    resultado = Double.valueOf(num1/num2);
                                 }
                             }else if(qualCalculo == 4){
-                                txtResultado.setText(String.valueOf(num1 * num2));
+                                resultado = Double.valueOf(num1*num2);
                             }
+                            txtResultado.setText(String.valueOf(resultado));
+                            num1 = resultado;
+                            qualCalculo = 0;
                         }
 
                     }
@@ -200,6 +204,7 @@ public class Calculadora {
                         num1 = null;
                         num2 = null;
                         qualCalculo = 0;
+                        resultado = null;
                     }
                 }
         );
