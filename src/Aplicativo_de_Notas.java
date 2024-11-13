@@ -37,8 +37,11 @@ public class Aplicativo_de_Notas {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(contador>0){
-                            txtResultado.setText(String.valueOf(nota/contador));
+                        if(nota/contador>=7 && contador>0){
+                            txtResultado.setText(String.valueOf("Sua nota é: "+(nota/contador)+", você está aprovado"));
+                        } else if(contador>0) {
+                            txtResultado.setText(String.valueOf("Sua nota é: "+(nota/contador)+", você está reprovado"));
+
                         }
                     }
                 }
