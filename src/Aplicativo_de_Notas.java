@@ -9,6 +9,9 @@ public class Aplicativo_de_Notas {
     private JTextField txtNota;
     private JButton btnCalcular;
     private JButton btnLimpar;
+    private JTextField txtTabelaNotas;
+    private JLabel lblTabellNotas;
+    private JLabel lblResultado;
     private Double nota = 0.0;
     private Integer contador = 0;
 
@@ -23,6 +26,7 @@ public class Aplicativo_de_Notas {
                             nota += aux;
                             contador++;
                             txtNota.setText(""); // Limpa o campo para nova entrada
+                            txtTabelaNotas.setText(txtTabelaNotas.getText()+contador+"ª nota: "+aux+". ");
                         } catch (NumberFormatException ex) {
                             JOptionPane.showMessageDialog(panelMain, "Por favor, insira um número válido.");
                         }
@@ -46,6 +50,7 @@ public class Aplicativo_de_Notas {
                         nota = 0.0;
                         contador = 0;
                         txtResultado.setText("");
+                        txtTabelaNotas.setText("");
                     }
                 }
         );
@@ -54,7 +59,7 @@ public class Aplicativo_de_Notas {
         JFrame frame = new JFrame("Aplicativo de Notas");
         frame.setContentPane(new Aplicativo_de_Notas().panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(600, 400);
         frame.setVisible(true);
     }
 }
